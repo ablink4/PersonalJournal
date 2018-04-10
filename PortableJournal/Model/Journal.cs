@@ -1,10 +1,11 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
+using PortableJournal.Helpers;
 
 namespace PortableJournal.Model
 {
-    class Journal : INotifyPropertyChanged
+    class Journal : ObservableObject
     {
         private FileInfo _journalFile;  // is this actually the type that I want?
         private List<JournalEntry> _entries;

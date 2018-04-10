@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace PortableJournal.ViewModel
+namespace PortableJournal.Helpers
 {
-    class ViewModelBase : INotifyPropertyChanged
+    class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

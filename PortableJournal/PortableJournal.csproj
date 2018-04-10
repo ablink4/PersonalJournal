@@ -70,7 +70,7 @@
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Model\Journal.cs" />
     <Compile Include="Model\JournalEntry.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

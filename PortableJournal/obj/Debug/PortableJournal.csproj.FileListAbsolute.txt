@@ -14,3 +14,13 @@ C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debu
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\MainWindow.baml
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.csprojResolveAssemblyReference.cache
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

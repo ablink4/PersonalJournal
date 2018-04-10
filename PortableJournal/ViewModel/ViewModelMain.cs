@@ -5,7 +5,7 @@ using PortableJournal.Helpers;
 
 namespace PortableJournal.ViewModel
 {
-    class ViewModelMain : ViewModelBase
+    class ViewModelMain : ObservableObject
     {
         private string _entryText;
         private int _entryLength;
