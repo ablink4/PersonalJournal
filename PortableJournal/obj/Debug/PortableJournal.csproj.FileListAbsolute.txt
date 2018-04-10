@@ -1,0 +1,16 @@
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\PortableJournal.exe.config
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\PortableJournal.exe
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\PortableJournal.pdb
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\App.g.cs
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal_MarkupCompile.cache
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal_MarkupCompile.lref
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.g.resources
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.Properties.Resources.resources
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.csproj.GenerateResource.Cache
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.exe
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.pdb
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\MainWindow.g.cs
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\MainWindow.baml
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\PortableJournal.csprojResolveAssemblyReference.cache
