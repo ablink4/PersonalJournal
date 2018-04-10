@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:PortableJournal.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        WindowState="Maximized"
+        Title="PortableJournal" 
+        WindowState="Maximized"        
         DataContext="{DynamicResource ViewModelMain}">
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
@@ -17,22 +17,63 @@
         <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveCommand}"/>
     </Window.InputBindings>
 
-    <!-- Just a note: this layout looks okay for what I have so far (which is minimal), but it's a hacky solution and it doesn't really match what I want
-        long term.  Just pointing this out, because you're going to have to figure out how to align shit eventually, pal.  -->
-    <DockPanel>
-        <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File">
-                <MenuItem Header="_New"/>
-                <MenuItem Header="_Open" Command="{Binding OpenCommand}"/>
-                <MenuItem Header="_Save" Command="{Binding SaveCommand}"/>
-                <MenuItem Header="_Close" Command="{Binding CloseCommand}"/>
-                <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
-            </MenuItem>
-        </Menu>
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Label>Journal Entry Length:</Label>
-            <Label Content="{Binding EntryLength}"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Menu>
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" Command="{Binding NewJournalCommand}"/>
+                    <MenuItem Header="_Open" Command="{Binding OpenCommand}"/>
+                    <MenuItem Header="_Save" Command="{Binding SaveCommand}"/>
+                    <MenuItem Header="_Close" Command="{Binding CloseCommand}"/>
+                    <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal" Background="ForestGreen">
+            <Label Foreground="AntiqueWhite">Journal Name:</Label>
+            <Label Foreground="SkyBlue" Content="{Binding JournalName}"/>
+            <Label Foreground="AntiqueWhite">Entry Name:</Label>
+            <Label Foreground="SkyBlue" Content="{Binding EntryName}"/>
+            <Label Foreground="AntiqueWhite">Entry Date:</Label>
+            <Label Foreground="SkyBlue" Content="{Binding EntryDate}"/>
+            <Button Background="SkyBlue" Foreground="AntiqueWhite" Content="New Entry" Command="{Binding NewEntryCommand}"/>
         </StackPanel>
-        <TextBox DockPanel.Dock="Bottom" VerticalAlignment="Stretch" AcceptsReturn="True" Text="{Binding EntryText, UpdateSourceTrigger=PropertyChanged}"/>
-    </DockPanel>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Column="0" Background="Maroon" Foreground="AntiqueWhite" SelectionMode="Single" ItemsSource="{Binding EntriesList}"/>
+            <GridSplitter HorizontalAlignment="Right" 
+                  VerticalAlignment="Stretch" 
+                  Grid.Column="1" ResizeBehavior="PreviousAndNext"
+                  Width="3" Background="#FFBCBCBC"/>
+            <TextBox Grid.Column="2" 
+                     Background="DarkBlue" 
+                     Foreground="AntiqueWhite"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                     AcceptsReturn="True" 
+                     Text="{Binding EntryText, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <StatusBar>
+                <Label>Journal Entry Length:</Label>
+                <Label Content="{Binding EntryText.Length}"/>
+            </StatusBar>
+        </Grid>
+    </Grid>
 </Window>

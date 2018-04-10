@@ -1,6 +1,6 @@
 ﻿using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Xml.Serialization;
 using PortableJournal.Helpers;
 
 namespace PortableJournal.Model
@@ -9,6 +9,8 @@ namespace PortableJournal.Model
     {
         private FileInfo _journalFile;  // is this actually the type that I want?
         private List<JournalEntry> _entries;
+
+        public Journal() { }
 
         public Journal(string name)  // does it also need a location?  Or does it need a name at all?  ...hm.
         {
@@ -24,14 +26,28 @@ namespace PortableJournal.Model
             }
         }
 
-        public void Open()
+        /// <summary>
+        /// Opens a Journal from an existing journal file and returns the Journal
+        /// instance
+        /// </summary>
+        /// <returns></returns>
+        public static Journal OpenExistingJournal(string journalFileName)
         {
+            Journal openedJournal = new Journal(journalFileName);
+            // open the journal file, read its contents, parse them, and then
+            // return the Journal instance.
 
+            return openedJournal;
         }
 
         public void Save()
         {
-
+            XmlSerializer serializer = new XmlSerializer(typeof(Journal));
+            using (StreamWriter writer = new StreamWriter(Name))
+            {
+                serializer.Serialize(writer, this);
+            }
+            
         }
 
         public void Close()
@@ -39,14 +55,9 @@ namespace PortableJournal.Model
             
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        internal void RaisePropertyChanged(string prop)
+        public void CreateNewEntry()  
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
+
         }
     }
 }
