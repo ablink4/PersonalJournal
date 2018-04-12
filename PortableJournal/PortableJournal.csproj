@@ -71,6 +71,7 @@
     <Compile Include="Model\Journal.cs" />
     <Compile Include="Model\JournalEntry.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
+    <Compile Include="Model\JournalPersistence.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

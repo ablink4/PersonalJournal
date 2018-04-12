@@ -13,7 +13,7 @@ using PortableJournal.Model;
 
 namespace PortableJournal.ViewModel
 {
-    class ViewModelMain : ObservableObject
+    public class ViewModelMain : ObservableObject
     {
         private Journal _activeJournal; // will be null until New() or Open() is called
 

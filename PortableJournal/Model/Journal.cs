@@ -5,7 +5,7 @@ using PortableJournal.Helpers;
 
 namespace PortableJournal.Model
 {
-    class Journal : ObservableObject
+    public class Journal : ObservableObject
     {
         private FileInfo _journalFile;  // is this actually the type that I want?
         private List<JournalEntry> _entries;
@@ -42,12 +42,7 @@ namespace PortableJournal.Model
 
         public void Save()
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Journal));
-            using (StreamWriter writer = new StreamWriter(Name))
-            {
-                serializer.Serialize(writer, this);
-            }
-            
+            JournalPersistence.Store(this, Name);            
         }
 
         public void Close()

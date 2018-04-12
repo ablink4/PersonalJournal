@@ -2,7 +2,7 @@
 
 namespace PortableJournal.Model
 {
-    class JournalEntry
+    public class JournalEntry
     {
         private string _name;
         private DateTime _timestamp;
