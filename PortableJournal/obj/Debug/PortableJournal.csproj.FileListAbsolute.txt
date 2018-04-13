@@ -49,3 +49,9 @@ C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\PortableJournal.g.resources
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\PortableJournal.Properties.Resources.resources
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\PortableJournal.csproj.GenerateResource.Cache
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.g.cs
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.baml
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\MainWindow - Copy.g.cs
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\MainWindow - Copy.baml
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.g.cs
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.baml

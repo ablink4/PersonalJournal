@@ -13,121 +13,75 @@ using PortableJournal.Model;
 
 namespace PortableJournal.ViewModel
 {
-    public class ViewModelMain : ObservableObject
+    public class ViewModelMain : ObservableObject, IViewModel
     {
-        private Journal _activeJournal; // will be null until New() or Open() is called
-
-        // TEMP: these are all just for laying out the View
-        private int _selectedEntryIndex;
-        private string _journalName;
-        private string _entryName;
-        private string _entryText;
-        private DateTime _entryDate;
-        private List<string> _entriesList; 
+        private string _name;
+        private ViewModelNewScreen _newScreenViewModel;
+        private ViewModelJournal _journalViewModel;
+        private IViewModel _currentViewModel;  // to switch between view models
 
         public ViewModelMain()
         {
-            // TEMP: these are all just for laying out the View
-            _entryText = string.Empty;
-            _entriesList = new List<string>();
-            for(int i = 0; i < 10; i++)
-            {
-                _entriesList.Add(String.Format("Entry {0}", i + 1));
-            }
-            _journalName = "Test Journal";
-            _entryName = "Entry 1";
-            _entryDate = DateTime.Now;
-            // end TEMP
+            _newScreenViewModel = new ViewModelNewScreen();
+            _journalViewModel = new ViewModelJournal();
+            _currentViewModel = _newScreenViewModel;
         }
 
-        public Journal ActiveJournal
+        public string Name
         {
             get
             {
-                // this is all wrong and needs to be fixed (TODO)
-                if(_activeJournal == null)
-                {
-                    _activeJournal = new Journal();
-                }
-                return _activeJournal;
-            }
-            private set 
-            {
-                _activeJournal = value; 
+                return _name ?? string.Empty;
             }
         }
 
-        public string JournalName
+        public IViewModel CurrentViewModel
         {
             get
             {
-                return ActiveJournal.Name;
-            }
-        }
-
-        public string EntryName
-        {
-            get
-            {
-                return ActiveJournal.SelectedEntry.Name;
+                return _currentViewModel;
             }
             set
             {
-                ActiveJournal.SelectedEntry.Name = value;
-                RaisePropertyChanged("EntryName");
+                _currentViewModel = value;
+                RaisePropertyChanged("CurrentViewModel");                
             }
         }
 
-        public DateTime EntryDate
+        public RelayCommand NewCommand
         {
             get
             {
-                return ActiveJournal.SelectedEntry.Timestamp;
-            }
-            set
-            {
-                ActiveJournal.SelectedEntry.Timestamp = value;
-                RaisePropertyChanged("EntryDate");
+                // TODO: need to also create a journal here
+                return new RelayCommand(OpenJournalView);
             }
         }
 
-        public string EntryText
+        public RelayCommand OpenCommand
         {
             get
             {
-                return ActiveJournal.SelectedEntry.FullText;
-            }
-            set
-            {
-                ActiveJournal.SelectedEntry.FullText = value;
-                RaisePropertyChanged("EntryText");
+                // TODO: need to retrieve a journal from disk here
+                return new RelayCommand(OpenJournalView);
             }
         }
 
-        public List<string> EntriesList
+        public void OpenJournalView(object parameter)
+        {
+            CurrentViewModel = _journalViewModel as IViewModel;
+        }
+
+        public RelayCommand CloseCommand
         {
             get
             {
-                return _entriesList;
-            }
-            set
-            {
-                _entriesList = value;
-                RaisePropertyChanged("EntriesList");
+                return new RelayCommand(CloseJournalView);
             }
         }
 
-        public int SelectedEntryIndex
+        public void CloseJournalView(object parameter)
         {
-            get
-            {
-                return ActiveJournal.SelectedEntryIndex;
-            }
-            set
-            {
-                ActiveJournal.SelectedEntryIndex = value;
-                RaisePropertyChanged("SelectedEntryIndex");
-            }
+            CurrentViewModel = _newScreenViewModel as IViewModel;
         }
 
         public RelayCommand ExitCommand
@@ -141,105 +95,6 @@ namespace PortableJournal.ViewModel
         void ExitApplication(object parameter)
         {
             System.Windows.Application.Current.Shutdown();
-        }
-
-        public RelayCommand SaveCommand
-        {
-            get
-            {
-                return new RelayCommand(SaveEntry);
-            }
-        }
-
-        void SaveEntry(object parameter)
-        {
-            SaveFileDialog fileChooser = new SaveFileDialog();
-            fileChooser.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            fileChooser.AddExtension = true;
-
-            Nullable<bool> result = fileChooser.ShowDialog();
-
-            if(result == true)
-            {
-                ActiveJournal.Save(); 
-            }
-        }
-
-        public RelayCommand OpenCommand
-        {
-            get
-            {
-                return new RelayCommand(OpenEntry);
-            }
-        }
-
-        void OpenEntry(object parameter)
-        {
-            OpenFileDialog fileChooser = new OpenFileDialog();
-            fileChooser.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            fileChooser.CheckFileExists = true;
-            
-            Nullable<bool> result = fileChooser.ShowDialog();
-
-            if (result == true)
-            {
-                string filename = fileChooser.FileName;
-
-                ActiveJournal = Journal.OpenExistingJournal(filename);
-
-                // TEMP: just to demonstrate basic functionality until it's ready from Journal
-                using (StreamReader reader = new StreamReader(filename))
-                {
-                    EntryText = reader.ReadToEnd();
-                }
-                // End TEMP
-            }
-        }
-
-        public RelayCommand CloseCommand
-        {
-            get
-            {
-                return new RelayCommand(CloseEntry);
-            }
-        }
-
-        void CloseEntry(object parameter)
-        {
-            ActiveJournal.Close();
-
-            // not sure this is the permanent functionality.  Probably want to clear the text from the Active Journal
-            EntryText = String.Empty; 
-        }
-
-        public RelayCommand NewEntryCommand
-        {
-            get
-            {
-                return new RelayCommand(CreateNewEntry);
-            }
-        }
-
-        void CreateNewEntry(object parameter)
-        {
-            ActiveJournal.CreateNewEntry();
-        }
-
-        public RelayCommand NewJournalCommand
-        {
-            get
-            {
-                return new RelayCommand(CreateJournal);
-            }
-        }
-
-        void CreateJournal(object parameter)
-        {
-            // TODO: this will need to be passed a name          
-            string filename = "TBD";
-            ActiveJournal = new Journal(filename);
-            // probably need to call something to initialize the Journal here as well, right?
-            // either that, or do it automatically in Journal...
         }
     }
 }

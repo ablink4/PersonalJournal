@@ -60,6 +60,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\NewScreenControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\JournalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,7 +85,20 @@
     <Compile Include="Model\JournalEntry.cs" />
     <Compile Include="Helpers\ObservableObject.cs" />
     <Compile Include="Model\JournalPersistence.cs" />
+    <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelNewScreen.cs" />
+    <Compile Include="ViewModel\ViewModelJournal.cs" />
+    <Compile Include="ViewModel\ViewModelMain - Copy.cs" />
     <Compile Include="ViewModel\ViewModelMain.cs" />
+    <Compile Include="View\NewScreenControl.xaml.cs">
+      <DependentUpon>NewScreenControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\JournalControl.xaml.cs">
+      <DependentUpon>JournalControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow - Copy.xaml.cs">
+      <DependentUpon>MainWindow - Copy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
