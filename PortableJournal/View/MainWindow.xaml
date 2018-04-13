@@ -57,7 +57,12 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <ListView Grid.Column="0" Background="Maroon" Foreground="AntiqueWhite" SelectionMode="Single" ItemsSource="{Binding EntriesList}"/>
+            <ListView Grid.Column="0" 
+                      Background="Maroon" 
+                      Foreground="AntiqueWhite" 
+                      SelectionMode="Single" 
+                      ItemsSource="{Binding EntriesList}"
+                      SelectedIndex="{Binding SelectedEntryIndex}" />
             <GridSplitter HorizontalAlignment="Right" 
                   VerticalAlignment="Stretch" 
                   Grid.Column="1" ResizeBehavior="PreviousAndNext"

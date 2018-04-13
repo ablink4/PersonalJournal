@@ -1,14 +1,19 @@
 ﻿using System.IO;
 using System.Collections.Generic;
-using System.Xml.Serialization;
+using System.Runtime.Serialization;
 using PortableJournal.Helpers;
 
 namespace PortableJournal.Model
 {
+    [DataContract]
     public class Journal : ObservableObject
     {
+        [DataMember]
         private FileInfo _journalFile;  // is this actually the type that I want?
+        [DataMember]
         private List<JournalEntry> _entries;
+
+        private int _selectedEntryIndex;
 
         public Journal() { }
 
@@ -23,6 +28,28 @@ namespace PortableJournal.Model
             get
             {
                 return _journalFile.Name;
+            }
+        }
+
+        public int SelectedEntryIndex
+        {
+            get
+            {
+                return _selectedEntryIndex;
+            }
+            set
+            {
+                _selectedEntryIndex = value;
+                RaisePropertyChanged("SelectedEntryIndex");
+                RaisePropertyChanged("SelectedEntry"); // update the selected entry when the index changes
+            }
+        }
+
+        public JournalEntry SelectedEntry
+        {
+            get
+            {
+                return _entries[SelectedEntryIndex]; 
             }
         }
 

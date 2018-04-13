@@ -1,5 +1,6 @@
-﻿using System.Xml.Serialization;
+﻿using System.Runtime.Serialization;
 using System.IO;
+using System.Xml;
 
 namespace PortableJournal.Model
 {
@@ -7,22 +8,23 @@ namespace PortableJournal.Model
     {
         public static void Store(Journal journalToStore, string filename)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(Journal));
-            using (StreamWriter writer = new StreamWriter(filename))
+            DataContractSerializer serializer = new DataContractSerializer(typeof(Journal));
+            using (FileStream writer = new FileStream(filename, FileMode.Create))
             {
-                serializer.Serialize(writer, journalToStore);
+                serializer.WriteObject(writer, journalToStore);
             }
         }
 
-        // should this be an object, or a Journal object?  It IS called JournalPersistence, right?
         public static Journal Retrieve(string filename)
         {
             Journal retrievedJournal;
 
-            XmlSerializer serializer = new XmlSerializer(typeof(Journal));
-            using (StreamReader reader = new StreamReader(filename))
+            using (FileStream reader = new FileStream(filename, FileMode.Open))
             {
-                retrievedJournal = serializer.Deserialize(reader) as Journal;
+                XmlDictionaryReader xmlReader = XmlDictionaryReader.CreateTextReader(reader, new XmlDictionaryReaderQuotas());
+                DataContractSerializer serializer = new DataContractSerializer(typeof(Journal));
+                retrievedJournal = serializer.ReadObject(xmlReader, true) as Journal;
+                xmlReader.Close();
             }
 
             return retrievedJournal;

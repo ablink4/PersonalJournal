@@ -18,6 +18,7 @@ namespace PortableJournal.ViewModel
         private Journal _activeJournal; // will be null until New() or Open() is called
 
         // TEMP: these are all just for laying out the View
+        private int _selectedEntryIndex;
         private string _journalName;
         private string _entryName;
         private string _entryText;
@@ -43,17 +44,16 @@ namespace PortableJournal.ViewModel
         {
             get
             {
+                // this is all wrong and needs to be fixed (TODO)
                 if(_activeJournal == null)
                 {
-                    _activeJournal = new Journal("idunno.txt");
-                    // what do I do here?  I don't want to create a blank one, right?
-                    // sigh
+                    _activeJournal = new Journal();
                 }
                 return _activeJournal;
             }
-            private set // is private the correct access here?
+            private set 
             {
-                _activeJournal = value;
+                _activeJournal = value; 
             }
         }
 
@@ -61,12 +61,7 @@ namespace PortableJournal.ViewModel
         {
             get
             {
-                return _journalName;
-            }
-            set
-            {
-                _journalName = value;
-                RaisePropertyChanged("JournalName");
+                return ActiveJournal.Name;
             }
         }
 
@@ -74,11 +69,11 @@ namespace PortableJournal.ViewModel
         {
             get
             {
-                return _entryName;
+                return ActiveJournal.SelectedEntry.Name;
             }
             set
             {
-                _entryName = value;
+                ActiveJournal.SelectedEntry.Name = value;
                 RaisePropertyChanged("EntryName");
             }
         }
@@ -87,11 +82,11 @@ namespace PortableJournal.ViewModel
         {
             get
             {
-                return _entryDate;
+                return ActiveJournal.SelectedEntry.Timestamp;
             }
             set
             {
-                _entryDate = value;
+                ActiveJournal.SelectedEntry.Timestamp = value;
                 RaisePropertyChanged("EntryDate");
             }
         }
@@ -100,11 +95,11 @@ namespace PortableJournal.ViewModel
         {
             get
             {
-                return _entryText;
+                return ActiveJournal.SelectedEntry.FullText;
             }
             set
             {
-                _entryText = value;
+                ActiveJournal.SelectedEntry.FullText = value;
                 RaisePropertyChanged("EntryText");
             }
         }
@@ -119,6 +114,19 @@ namespace PortableJournal.ViewModel
             {
                 _entriesList = value;
                 RaisePropertyChanged("EntriesList");
+            }
+        }
+
+        public int SelectedEntryIndex
+        {
+            get
+            {
+                return ActiveJournal.SelectedEntryIndex;
+            }
+            set
+            {
+                ActiveJournal.SelectedEntryIndex = value;
+                RaisePropertyChanged("SelectedEntryIndex");
             }
         }
 
@@ -154,13 +162,6 @@ namespace PortableJournal.ViewModel
             if(result == true)
             {
                 ActiveJournal.Save(); 
-
-                // TEMP: just to demonstrate basic functionality until it's ready from Journal
-                using (StreamWriter writer = new StreamWriter(fileChooser.FileName))
-                {
-                    writer.WriteLine(EntryText);
-                }
-                // End TEMP
             }
         }
 
@@ -207,9 +208,8 @@ namespace PortableJournal.ViewModel
         {
             ActiveJournal.Close();
 
-            // TEMP: just to demonstrate basic functionality for the View
+            // not sure this is the permanent functionality.  Probably want to clear the text from the Active Journal
             EntryText = String.Empty; 
-            // End TEMP
         }
 
         public RelayCommand NewEntryCommand
