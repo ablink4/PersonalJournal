@@ -55,3 +55,7 @@ C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\MainWindow - Copy.baml
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.g.cs
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.baml
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.g.cs
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.g.cs
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.baml
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.baml

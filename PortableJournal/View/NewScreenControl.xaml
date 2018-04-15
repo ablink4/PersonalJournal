@@ -8,6 +8,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              DataContext="{DynamicResource ViewModelNewScreen}">
+    <UserControl.Resources>
+        <vm:ViewModelNewScreen x:Key="ViewModelNewScreen"/>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <!--wrap the 2 columns I actually need with star columns to align in middle.  There's probably a better way-->
@@ -22,7 +26,6 @@
         </StackPanel>
         <StackPanel Grid.Column="2" Margin="100">
             <Button MaxHeight="50" Content="Open Journal" Command="{Binding OpenJournalCommand}"/>
-            <TextBox Text="{Binding JournalToOpenFilePath}"/>
         </StackPanel>        
         
     </Grid>

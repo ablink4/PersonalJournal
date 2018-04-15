@@ -16,5 +16,10 @@ namespace PortableJournal.ViewModel
             }
         }
 
+        public string JournalName
+        {
+            get { return "My Journal"; }
+        }
+
     }
 }
