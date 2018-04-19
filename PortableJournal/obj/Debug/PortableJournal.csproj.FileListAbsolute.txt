@@ -59,3 +59,4 @@ C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debu
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.g.cs
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.baml
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.baml
+C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\App.baml

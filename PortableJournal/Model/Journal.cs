@@ -13,13 +13,19 @@ namespace PortableJournal.Model
         [DataMember]
         private List<JournalEntry> _entries;
 
+        private bool _hasAFile; // determines if this Journal already has a file, or if it needs to be saved
+
         private int _selectedEntryIndex;
 
-        public Journal() { }
+        public Journal()
+        {
+            _hasAFile = false;
+        }
 
         public Journal(string name)  // does it also need a location?  Or does it need a name at all?  ...hm.
         {
             _journalFile = new FileInfo(name);
+            _hasAFile = _journalFile.Exists; // not sure this is actually necessary...
             _entries = new List<JournalEntry>();
         }
 

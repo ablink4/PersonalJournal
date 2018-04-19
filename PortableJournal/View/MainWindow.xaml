@@ -12,13 +12,6 @@
     
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
-
-        <DataTemplate DataType="{x:Type vm:ViewModelNewScreen}">
-            <view:NewScreenControl/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ViewModelJournal}">
-            <view:JournalControl/>
-        </DataTemplate>
     </Window.Resources>
 
     <Window.InputBindings>

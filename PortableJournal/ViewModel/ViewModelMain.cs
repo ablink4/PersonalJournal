@@ -96,5 +96,18 @@ namespace PortableJournal.ViewModel
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        public RelayCommand ShowJournalView 
+        {
+            get
+            {
+                return new RelayCommand(SwitchToJournalView);
+            }
+        }
+
+        void SwitchToJournalView(object parameter)
+        {
+            CurrentViewModel = _journalViewModel as IViewModel;
+        }
     }
 }

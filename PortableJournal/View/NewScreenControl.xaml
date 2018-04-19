@@ -6,27 +6,52 @@
              xmlns:local="clr-namespace:PortableJournal.View"
              xmlns:vm="clr-namespace:PortableJournal.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
-             DataContext="{DynamicResource ViewModelNewScreen}">
+             d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <vm:ViewModelNewScreen x:Key="ViewModelNewScreen"/>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Background" Value="AntiqueWhite"/>
+            <Setter Property="Foreground" Value="DarkGreen"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
     </UserControl.Resources>
     
     <Grid>
-        <Grid.ColumnDefinitions>
-            <!--wrap the 2 columns I actually need with star columns to align in middle.  There's probably a better way-->
-            <ColumnDefinition Width="*"/> 
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" Margin="100">
-            <Button MaxHeight="50" Content="New Journal" Command="{Binding NewJournalCommand}"/>
-            <TextBox Text="{Binding NewJournalName}"/>
-        </StackPanel>
-        <StackPanel Grid.Column="2" Margin="100">
-            <Button MaxHeight="50" Content="Open Journal" Command="{Binding OpenJournalCommand}"/>
-        </StackPanel>        
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" 
+               Margin="0,100,0,0"
+               HorizontalAlignment="Center"
+               Content="Welcome to Portable Journal!  What would you like to do?"
+               FontSize="40"
+               FontWeight="Bold"
+               FontFamily="Arial"
+               Foreground="DarkGreen"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <!--wrap the 2 columns I actually need with star columns to align in middle.  There's probably a better way-->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="100">
+                <Button Command="{Binding DataContext.ShowJournalView, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">
+                    <TextBlock Text="Create Journal" TextWrapping="Wrap" HorizontalAlignment="Center" />
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2" Margin="100">
+                <Button Command="{Binding OpenJournalCommand}">
+                    <TextBlock Text="Open Journal" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

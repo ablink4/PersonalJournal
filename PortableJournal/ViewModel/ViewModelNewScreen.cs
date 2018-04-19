@@ -42,9 +42,13 @@ namespace PortableJournal.ViewModel
 
         private void CreateNewJournal(object parameter)
         {
+            // all I actually want to do is switch the view
+            // how can I do that from in here?
+            /*
             Journal newJournal = new Journal(NewJournalName);
             string journalFileName = string.Format("{0}.pj", NewJournalName);
             JournalPersistence.Store(newJournal, journalFileName);   
+            */
         }
 
         public RelayCommand OpenJournalCommand
