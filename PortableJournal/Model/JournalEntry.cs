@@ -1,24 +1,13 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace PortableJournal.Model
 {
-    [DataContract]
     public class JournalEntry
     {
-        [DataMember]
         private string _name;
-
-        [DataMember]
         private DateTime _timestamp;
-
-        [DataMember]
         private string _topic;
-
-        [DataMember]
         private string _fulltext;
-
-        [DataMember]
         private string _summary;
         
         public JournalEntry(string name)

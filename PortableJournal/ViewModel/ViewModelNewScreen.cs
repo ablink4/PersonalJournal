@@ -66,7 +66,7 @@ namespace PortableJournal.ViewModel
 
             if (openDialog.ShowDialog() == true)
             {
-                Journal openedJournal = JournalPersistence.Retrieve(openDialog.FileName);
+                //Journal openedJournal = JournalPersistence.Retrieve(openDialog.FileName);
             }
         }
     }

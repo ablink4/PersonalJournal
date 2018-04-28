@@ -1,91 +1,73 @@
-﻿using System.IO;
+﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using PortableJournal.Helpers;
 
 namespace PortableJournal.Model
 {
-    [DataContract]
     public class Journal : ObservableObject
     {
-        [DataMember]
-        private FileInfo _journalFile;  // is this actually the type that I want?
-        [DataMember]
+        private string _name;
+        private string _journalType;
+        private DateTime _accessedDate;
         private List<JournalEntry> _entries;
 
-        private bool _hasAFile; // determines if this Journal already has a file, or if it needs to be saved
-
-        private int _selectedEntryIndex;
-
-        public Journal()
-        {
-            _hasAFile = false;
-        }
-
-        public Journal(string name)  // does it also need a location?  Or does it need a name at all?  ...hm.
-        {
-            _journalFile = new FileInfo(name);
-            _hasAFile = _journalFile.Exists; // not sure this is actually necessary...
-            _entries = new List<JournalEntry>();
-        }
+        public Journal() { }
 
         public string Name
         {
             get
             {
-                return _journalFile.Name;
-            }
-        }
-
-        public int SelectedEntryIndex
-        {
-            get
-            {
-                return _selectedEntryIndex;
+                return _name ?? string.Empty;
             }
             set
             {
-                _selectedEntryIndex = value;
-                RaisePropertyChanged("SelectedEntryIndex");
-                RaisePropertyChanged("SelectedEntry"); // update the selected entry when the index changes
+                _name = value;
+                RaisePropertyChanged("Name");
             }
         }
 
-        public JournalEntry SelectedEntry
+        public string JournalType
         {
             get
             {
-                return _entries[SelectedEntryIndex]; 
+                return _journalType ?? string.Empty;
+            }
+            set
+            {
+                _journalType = value;
+                RaisePropertyChanged("JournalType");
             }
         }
 
-        /// <summary>
-        /// Opens a Journal from an existing journal file and returns the Journal
-        /// instance
-        /// </summary>
-        /// <returns></returns>
-        public static Journal OpenExistingJournal(string journalFileName)
+        public DateTime AccessedDate
         {
-            Journal openedJournal = new Journal(journalFileName);
-            // open the journal file, read its contents, parse them, and then
-            // return the Journal instance.
-
-            return openedJournal;
+            get
+            {
+                return _accessedDate;
+            }
+            set
+            {
+                _accessedDate = value;
+                RaisePropertyChanged("AccessedDate");
+            }
         }
 
-        public void Save()
+        public List<JournalEntry> Entries
         {
-            JournalPersistence.Store(this, Name);            
-        }
+            get
+            {
+                if(_entries == null)
+                {
+                    _entries = new List<JournalEntry>();
+                }
 
-        public void Close()
-        {
-            
-        }
-
-        public void CreateNewEntry()  
-        {
-
+                return _entries;
+            }
+            set
+            {
+                _entries = value;
+                RaisePropertyChanged("Entries");
+            }
         }
     }
 }
