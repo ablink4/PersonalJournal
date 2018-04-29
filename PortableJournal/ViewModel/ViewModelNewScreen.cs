@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System.Collections.Generic;
+using Microsoft.Win32;
 using PortableJournal.Helpers;
 using PortableJournal.Model;
 
@@ -51,6 +52,14 @@ namespace PortableJournal.ViewModel
             */
         }
 
+        public List<Journal> ExistingJournals
+        {
+            get
+            {
+                return JournalDatabase.GetExistingJournals();
+            }
+        }
+
         public RelayCommand OpenJournalCommand
         {
             get
@@ -61,13 +70,22 @@ namespace PortableJournal.ViewModel
 
         private void OpenJournal(object parameter)
         {
-            OpenFileDialog openDialog = new OpenFileDialog();
-            openDialog.Filter = "Journal Files (*.pj)|*.pj|All files (*.*)|*.*"; 
+            JournalDatabase.SetAsOpenJournal(parameter as string);
+        }
 
-            if (openDialog.ShowDialog() == true)
+        public RelayCommand AddJournalCommand
+        {
+            get
             {
-                //Journal openedJournal = JournalPersistence.Retrieve(openDialog.FileName);
+                return new RelayCommand(AddJournal);
             }
+        }
+
+        private void AddJournal(object parameter)
+        {
+            Journal j = new Journal();
+            j.Name = NewJournalName;
+            JournalDatabase.AddJournal(j);
         }
     }
 }

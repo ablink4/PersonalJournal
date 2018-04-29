@@ -51,7 +51,7 @@
                      Foreground="AntiqueWhite"
                      ScrollViewer.VerticalScrollBarVisibility="Auto" 
                      AcceptsReturn="True" 
-                     Text="{Binding EntryText, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding JournalContent, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
     </Grid>
 </UserControl>

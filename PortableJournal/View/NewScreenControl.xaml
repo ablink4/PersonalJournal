@@ -11,7 +11,7 @@
         <vm:ViewModelNewScreen x:Key="ViewModelNewScreen"/>
 
         <Style TargetType="Button">
-            <Setter Property="Height" Value="150"/>
+            <Setter Property="Height" Value="50"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="Background" Value="AntiqueWhite"/>
             <Setter Property="Foreground" Value="DarkGreen"/>
@@ -23,6 +23,7 @@
     
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -42,16 +43,29 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="1" Grid.Column="1" Margin="100">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="100">
                 <Button Command="{Binding DataContext.ShowJournalView, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}">
                     <TextBlock Text="Create Journal" TextWrapping="Wrap" HorizontalAlignment="Center" />
                 </Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="2" Margin="100">
-                <Button Command="{Binding OpenJournalCommand}">
+            <StackPanel Grid.Row="0" Grid.Column="2" Margin="100">
+                <Button>
                     <TextBlock Text="Open Journal" TextWrapping="Wrap" HorizontalAlignment="Center"/>
                 </Button>
             </StackPanel>
+            <TextBox Grid.Row="1" Text="{Binding NewJournalName}"/>
+            <Button Content="Add Journal to DB" Command="{Binding AddJournalCommand}"/>
         </Grid>
+        <ItemsControl Grid.Row="2" ItemsSource="{Binding ExistingJournals}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding Name}" Command="{Binding OpenJournalCommand}" CommandParameter="{Binding Name}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

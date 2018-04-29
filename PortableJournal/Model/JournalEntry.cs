@@ -10,6 +10,9 @@ namespace PortableJournal.Model
         private string _fulltext;
         private string _summary;
         
+        // LiteDB requires a parameterless constructor to work
+        public JournalEntry() { }
+
         public JournalEntry(string name)
         {
             _name = name;
