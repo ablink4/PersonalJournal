@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="PortableJournal" 
         WindowState="Maximized"
-        DataContext="{DynamicResource ViewModelMain}">
+        DataContext="{DynamicResource ViewModelMain}"
+        Icon="/Images\journal.png">
     
     <Window.Resources>
         <vm:ViewModelMain x:Key="ViewModelMain"/>
@@ -27,16 +28,60 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0">
-            <MenuItem Header="_File">
-                <MenuItem Header="_New" Command="{Binding NewCommand}"/>
-                <MenuItem Header="_Open" Command="{Binding OpenCommand}"/>
-                <MenuItem Header="_Save" Command="{Binding SaveCommand}"/>
-                <MenuItem Header="_Close" Command="{Binding CloseCommand}"/>
-                <MenuItem Header="E_xit" Command="{Binding ExitCommand}"/>
-            </MenuItem>
-        </Menu>
-
+        <Ribbon Grid.Row="0" Margin="0,5,0,0">
+            <Ribbon.HelpPaneContent>
+                <!-- need the leading forward slash to make the relative pathing work, also need BuildAction=Content-->
+                <RibbonButton SmallImageSource="/Images\help.png"/>
+            </Ribbon.HelpPaneContent>
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton x:Name="Save" SmallImageSource="/Images\save.png"/>
+                    <RibbonSplitButton x:Name="Undo" SmallImageSource="/Images\undo.png">
+                        <RibbonSplitMenuItem Header="Undo action #1"/>
+                        <RibbonSplitMenuItem Header="Undo action #2"/>
+                        <RibbonSplitMenuItem Header="Undo action #3"/>
+                    </RibbonSplitButton>
+                    <RibbonSplitButton x:Name="Redo" SmallImageSource="/Images\redo.png">
+                        <RibbonSplitMenuItem Header="Redo action #1"/>
+                        <RibbonSplitMenuItem Header="Redo action #2"/>
+                    </RibbonSplitButton>
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu KeyTip="F">
+                    <RibbonApplicationMenuItem Header="New" ImageSource="/Images\file.png" Command="{Binding NewCommand}"/>
+                    <RibbonApplicationMenuItem Header="Open" ImageSource="/Images\open.jpg" Command="{Binding OpenCommand}"/>
+                    <RibbonApplicationMenuItem Header="Save" ImageSource="/Images\save.png" Command="{Binding SaveCommand}"/>
+                    <RibbonApplicationMenuItem Header="Close" ImageSource="/Images\close.png" Command="{Binding CloseCommand}"/>
+                    <RibbonApplicationMenuItem Header="Exit" ImageSource="/Images\exit.png" Command="{Binding ExitCommand}"/>
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+            <RibbonTab Header="Home" KeyTip="H">
+                <RibbonGroup x:Name="JournalGroup" Header="Journal">
+                    <RibbonMenuButton LargeImageSource="/Images\journal.png" Label="New Journal">
+                        <RibbonMenuItem ImageSource="/Images\personal.png" Header="Personal"/>
+                        <RibbonMenuItem ImageSource="/Images\exercise.png" Header="Exercise"/>
+                        <RibbonMenuItem ImageSource="/Images\gratitude.png" Header="Gratitude"/>
+                        <RibbonMenuItem ImageSource="/Images\mindfulness.png" Header="Mindfulness"/>
+                        <RibbonMenuItem ImageSource="/Images\food.jpg" Header="Food"/>
+                    </RibbonMenuButton>
+                    <RibbonMenuButton SmallImageSource="/Images\open.jpg" Label="Open"/>
+                        <RibbonMenuButton SmallImageSource="/Images\save.png" Label="Save" />
+                    <RibbonMenuButton SmallImageSource="/Images\close.png" Label="Close"/>
+                    <RibbonMenuButton LargeImageSource="/Images\unlock.jpg" Label="Unlock"/>
+                </RibbonGroup>
+                <RibbonGroup x:Name="EntryGroup" Header="Entry">
+                    <RibbonButton LargeImageSource="/Images\add.png" Label="Add Entry" IsEnabled="False"/>
+                    <RibbonMenuButton LargeImageSource="/Images\insert.png" Label="Insert">
+                        <RibbonMenuItem ImageSource="/Images\file.png" Header="File"/>
+                        <RibbonMenuItem ImageSource="/Images\picture.jpg" Header="Picture"/>
+                        <RibbonMenuItem ImageSource="/Images\audio.png" Header="Audio"/>
+                        <RibbonMenuItem ImageSource="/Images\video.png" Header="Video"/>
+                    </RibbonMenuButton>
+                </RibbonGroup>
+            </RibbonTab>
+        </Ribbon>
+        
         <ContentPresenter Grid.Row="1" x:Name="ContentDisplayControl" Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

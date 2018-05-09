@@ -51,8 +51,6 @@ C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\Porta
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\PortableJournal.csproj.GenerateResource.Cache
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.g.cs
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\JournalControl.baml
-C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\MainWindow - Copy.g.cs
-C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\MainWindow - Copy.baml
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.g.cs
 C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.baml
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\View\NewScreenControl.g.cs
@@ -62,3 +60,6 @@ C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debu
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\obj\Debug\App.baml
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\LiteDB.dll
 C:\Users\amos\Documents\github_projects\PortableJournal\PortableJournal\bin\Debug\LiteDB.xml
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\bin\Debug\LiteDB.dll
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\bin\Debug\LiteDB.xml
+C:\Users\204049759\Documents\git\PortableJournal\PortableJournal\obj\Debug\App.baml

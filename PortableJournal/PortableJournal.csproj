@@ -42,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -128,7 +129,41 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\journal.png" />
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\close.png" />
+    <Resource Include="Images\exit.png" />
+    <Resource Include="Images\help.png" />
+    <Resource Include="Images\file.png" />
+    <Resource Include="Images\open.jpg" />
+    <Resource Include="Images\redo.png" />
+    <Resource Include="Images\save.png" />
+    <Resource Include="Images\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\lock.png" />
+    <Resource Include="Images\unlock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\audio.png" />
+    <Resource Include="Images\picture.jpg" />
+    <Resource Include="Images\video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\insert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\personal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\exercise.png" />
+    <Resource Include="Images\gratitude.png" />
+    <Resource Include="Images\mindfulness.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\food.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
