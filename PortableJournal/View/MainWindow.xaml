@@ -49,11 +49,11 @@
             </Ribbon.QuickAccessToolBar>
             <Ribbon.ApplicationMenu>
                 <RibbonApplicationMenu KeyTip="F">
-                    <RibbonApplicationMenuItem Header="New" ImageSource="/Images\file.png" Command="{Binding NewCommand}"/>
-                    <RibbonApplicationMenuItem Header="Open" ImageSource="/Images\open.jpg" Command="{Binding OpenCommand}"/>
-                    <RibbonApplicationMenuItem Header="Save" ImageSource="/Images\save.png" Command="{Binding SaveCommand}"/>
-                    <RibbonApplicationMenuItem Header="Close" ImageSource="/Images\close.png" Command="{Binding CloseCommand}"/>
-                    <RibbonApplicationMenuItem Header="Exit" ImageSource="/Images\exit.png" Command="{Binding ExitCommand}"/>
+                    <RibbonApplicationMenuItem Header="_New" ImageSource="/Images\file.png" Command="{Binding NewCommand}"/>
+                    <RibbonApplicationMenuItem Header="_Open" ImageSource="/Images\open.jpg" Command="{Binding OpenCommand}"/>
+                    <RibbonApplicationMenuItem Header="_Save" ImageSource="/Images\save.png" Command="{Binding SaveCommand}"/>
+                    <RibbonApplicationMenuItem Header="_Close" ImageSource="/Images\close.png" Command="{Binding CloseCommand}"/>
+                    <RibbonApplicationMenuItem Header="E_xit" ImageSource="/Images\exit.png" Command="{Binding ExitCommand}"/>
                 </RibbonApplicationMenu>
             </Ribbon.ApplicationMenu>
             <RibbonTab Header="Home" KeyTip="H">
