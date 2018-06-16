@@ -1,0 +1,20 @@
+{
+  "name": "electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-prebuilt": "^1.4.13",
+    "node-gyp": "^3.6.2",
+    "sqlite3": "^4.0.0"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.7.3"
+  }
+}
