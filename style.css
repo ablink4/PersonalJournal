@@ -23,12 +23,15 @@ input[type="button"] {
     height:50px;
     margin: 5px;
     font-size: 14pt;
-
-
 }
 
 input[type="text"] {
     width:250px;
     height:30px;
     font-size: 12pt;
+}
+
+label {
+    font-size: 16pt;
+    margin:5px;
 }
