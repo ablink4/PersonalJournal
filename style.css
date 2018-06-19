@@ -1,28 +1,36 @@
 textarea {
     background-color: rgb(228, 228, 288);
-    width:100%;
-    height:85%;
+    height:72%;
+    width: 100%;
     margin: 5px;
     font-family: "Geneva";
     font-size:18pt;
 }
 
 html {
-    width:100%;
     height:98%;
+    width: 100%;
 }
 
 body {
     background-color: rgb(153, 204, 255);
-    width:98%;
     height:98%;
+    width: 98%;
 }
 
 input[type="button"] {
-    width:150px;
-    height:50px;
+    width:100px;
+    height:40px;
     margin: 5px;
     font-size: 14pt;
+}
+
+input.nav {
+    border-radius: 16px;
+}
+
+#new-journal-button {
+    width: 150px;
 }
 
 input[type="text"] {
@@ -32,6 +40,21 @@ input[type="text"] {
 }
 
 label {
-    font-size: 16pt;
+    font-family: "Geneva";
     margin:5px;
+}
+
+#current-entry-date {
+    font-size: 14pt;
+    margin: 0px;
+}
+
+#current-entry-name {
+    font-size: 18pt;
+    font-weight: bold;
+    text-decoration:underline;
+}
+
+#browse-entries-button {
+    float: right;
 }

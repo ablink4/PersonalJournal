@@ -6,18 +6,13 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h2>Journals</h2>
-        <input type="button" value="New Journal"/>
-        <input type="text" id="new-journal-name" placeholder="Journal Name"/>
-        <hr>
-        <h2>Entries</h2>
-        <label>Current Entry:</label>
-        <label id="current-entry-label">Name of Entry Here</label>
-        <input type="button" value="Previous"/>
-        <input type="button" value="Browse"/>
-        <input type="button" value="Next"/>
+        <input type="button" id="previous-entry-button" class="nav" value="Previous"/>
+        <label id="current-entry-name">Name of Entry Here</label>
+        <label id="current-entry-date">Entry Date</label>
+        <input type="button" id="next-entry-button" class="nav" value="Next"/>
+        <input type="button" id="browse-entries-button" value="Browse"/>
         <br>
-        <input type="button" value="New Entry"/>
+        <input type="button" id="new-entry-button" value="New Entry"/>
         <input type="text" id="new-entry-name" placeholder="Entry Name"/>
         <hr>
         <textarea id="journal-content" placeholder="Write your entry here..."></textarea>
