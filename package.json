@@ -12,6 +12,7 @@
   "dependencies": {
     "dateformat": "^3.0.3",
     "electron-prebuilt": "^1.4.13",
+    "electron-spellchecker": "^1.1.2",
     "node-gyp": "^3.6.2",
     "sqlite3": "^4.0.0"
   },

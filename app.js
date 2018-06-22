@@ -1,3 +1,8 @@
+const electronSpellChecker = require('electron-spellchecker');
+const SpellCheckHandler = electronSpellChecker.SpellCheckHandler;
+const ContextMenuListener = electronSpellChecker.ContextMenuListener;
+const ContextMenuBuilder = electronSpellChecker.ContextMenuBuilder;
+
 const sqlite3 = require('sqlite3').verbose();
 const dateformat = require('dateformat');
 
@@ -10,6 +15,17 @@ const browseEntriesButton = document.getElementById('browse-entries-button');
 const entryNameLabel = document.getElementById('current-entry-name');
 const entryDateLabel = document.getElementById('current-entry-date');
 const newEntryName = document.getElementById('new-entry-name');
+
+window.spellCheckHandler = new SpellCheckHandler();
+window.spellCheckHandler.attachToInput();
+
+// start with US english
+window.spellCheckHandler.switchLanguage('en-US');
+
+let contextMenuBuilder = new ContextMenuBuilder(window.spellCheckHandler);
+let contextMenuListener = new ContextMenuListener((info) => {
+    contextMenuBuilder.showPopupMenu(info);
+});
 
 var db = new sqlite3.Database('./sqldb', (err) => printError(err));
 
@@ -66,6 +82,8 @@ newEntryButton.addEventListener('click', () => {
         printError(err);
         updateCurrentEntry(rows[0]);
     });
+
+    newEntryName.value = ''; // reset the new entry name field
 });
 
 // note: case where there is no previous/next entry handled by guard clause in
