@@ -1,6 +1,6 @@
 textarea {
     background-color: rgb(228, 228, 288);
-    height:72%;
+    height:85%;
     width: 100%;
     margin: 5px;
     font-family: "Geneva";
@@ -23,14 +23,7 @@ input[type="button"] {
     height:40px;
     margin: 5px;
     font-size: 14pt;
-}
-
-input.nav {
     border-radius: 16px;
-}
-
-#new-journal-button {
-    width: 150px;
 }
 
 input[type="text"] {
@@ -57,4 +50,16 @@ label {
 
 #browse-entries-button {
     float: right;
+}
+
+#new-entry-button {
+    float: right;
+}
+
+#search-input {
+    float: right;
+    margin: 10px 0px;
+    height: 30px;
+    width: 250px;
+    font-size: 20px;
 }

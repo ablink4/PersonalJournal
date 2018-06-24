@@ -14,7 +14,6 @@ const nextEntryButton = document.getElementById('next-entry-button');
 const browseEntriesButton = document.getElementById('browse-entries-button');
 const entryNameLabel = document.getElementById('current-entry-name');
 const entryDateLabel = document.getElementById('current-entry-date');
-const newEntryName = document.getElementById('new-entry-name');
 
 window.spellCheckHandler = new SpellCheckHandler();
 window.spellCheckHandler.attachToInput();
@@ -72,18 +71,23 @@ saveButton.addEventListener('click', () => {
 });
 
 newEntryButton.addEventListener('click', () => {
-    var name = newEntryName.value;
+    var query = `select count(*) as count from journal;`;
 
-    var insertQuery = `INSERT INTO journal (id,entryName, entryDate, entryText) VALUES(NULL,?,?,?)`;
-    db.run(insertQuery, [name, new Date(), ''], (err) => printError(err));
-
-    const query = `SELECT * from journal order by entryDate desc limit 1;`;
     db.all(query, (err, rows) => {
         printError(err);
-        updateCurrentEntry(rows[0]);
-    });
 
-    newEntryName.value = ''; // reset the new entry name field
+        var newEntryNumber = rows[0].count + 1;
+        var name = 'Entry ' + newEntryNumber;
+
+        var insertQuery = `INSERT INTO journal (id,entryName, entryDate, entryText) VALUES(NULL,?,?,?)`;
+        db.run(insertQuery, [name, new Date(), ''], (err) => printError(err));
+
+        const selectQuery = `SELECT * from journal order by entryDate desc limit 1;`;
+        db.all(selectQuery, (err, selectedRows) => {
+            printError(err);
+            updateCurrentEntry(selectedRows[0]);
+        });
+    });
 });
 
 // note: case where there is no previous/next entry handled by guard clause in
