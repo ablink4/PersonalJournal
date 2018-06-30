@@ -2,7 +2,7 @@ const electronSpellChecker = require('electron-spellchecker');
 const SpellCheckHandler = electronSpellChecker.SpellCheckHandler;
 const ContextMenuListener = electronSpellChecker.ContextMenuListener;
 const ContextMenuBuilder = electronSpellChecker.ContextMenuBuilder;
-
+const ipcRenderer = require('electron').ipcRenderer;
 const sqlite3 = require('sqlite3').verbose();
 const dateformat = require('dateformat');
 
@@ -14,6 +14,7 @@ const nextEntryButton = document.getElementById('next-entry-button');
 const browseEntriesButton = document.getElementById('browse-entries-button');
 const entryNameLabel = document.getElementById('current-entry-name');
 const entryDateLabel = document.getElementById('current-entry-date');
+const searchInput = document.getElementById('search-input');
 
 window.spellCheckHandler = new SpellCheckHandler();
 window.spellCheckHandler.attachToInput();
@@ -40,18 +41,6 @@ db.serialize(() => {
         if(rows.length === 0) {
             var insertQuery = `INSERT INTO journal (id, entryName, entryDate, entryText) VALUES(NULL,?,?,?)`;
             db.run(insertQuery, ['Entry 1', new Date(), ''], (err) => printError(err));
-        }
-        else {
-            const selectQuery = `SELECT * from journal;`;
-
-            // TODO: need to query by ID of most recent entry
-            db.each(selectQuery, (err, row) => {
-                printError(err);
-
-                if(row) {
-                    journalContent.value = row.entryText;
-                }
-            });
         }
     });
 
@@ -105,6 +94,25 @@ nextEntryButton.addEventListener('click', () => {
     var query = `select * from journal where id > ? order by id asc limit 1;`;
 
     db.all(query, [currentEntryId], (err, rows) => {
+        printError(err);
+        updateCurrentEntry(rows[0]);
+    });
+});
+
+browseEntriesButton.addEventListener('click', () => {
+    ipcRenderer.send('show-browse-window', true);
+});
+
+searchInput.addEventListener('search', () => {
+    if(!searchInput.value) return;
+
+    console.log(searchInput.value);
+    ipcRenderer.send('search-for-text', searchInput.value);
+});
+
+ipcRenderer.on('show-entry-by-id', (event, data) => {
+    var query = `select * from journal where id = ?;`;
+    db.all(query, [data], (err, rows) => {
         printError(err);
         updateCurrentEntry(rows[0]);
     });

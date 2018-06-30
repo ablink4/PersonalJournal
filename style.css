@@ -24,6 +24,7 @@ input[type="button"] {
     margin: 5px;
     font-size: 14pt;
     border-radius: 16px;
+    cursor: pointer;
 }
 
 input[type="text"] {
@@ -35,6 +36,14 @@ input[type="text"] {
 label {
     font-family: "Geneva";
     margin:5px;
+}
+
+span {
+    font-size: 24pt;
+    border-radius: 6px;
+    background-color: rgb(150,100,255);
+    font-family: "Geneva";
+    cursor: pointer;
 }
 
 #current-entry-date {
