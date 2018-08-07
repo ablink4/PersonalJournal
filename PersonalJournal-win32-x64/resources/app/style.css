@@ -1,0 +1,74 @@
+textarea {
+    background-color: rgb(228, 228, 288);
+    height:85%;
+    width: 100%;
+    margin: 5px;
+    font-family: "Geneva";
+    font-size:18pt;
+}
+
+html {
+    height:98%;
+    width: 100%;
+}
+
+body {
+    background-color: rgb(153, 204, 255);
+    height:98%;
+    width: 98%;
+}
+
+input[type="button"] {
+    width:100px;
+    height:40px;
+    margin: 5px;
+    font-size: 14pt;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+input[type="text"] {
+    width:250px;
+    height:30px;
+    font-size: 12pt;
+}
+
+label {
+    font-family: "Geneva";
+    margin:5px;
+}
+
+span {
+    font-size: 24pt;
+    border-radius: 6px;
+    background-color: rgb(150,100,255);
+    font-family: "Geneva";
+    cursor: pointer;
+}
+
+#current-entry-date {
+    font-size: 14pt;
+    margin: 0px;
+}
+
+#current-entry-name {
+    font-size: 18pt;
+    font-weight: bold;
+    text-decoration:underline;
+}
+
+#browse-entries-button {
+    float: right;
+}
+
+#new-entry-button {
+    float: right;
+}
+
+#search-input {
+    float: right;
+    margin: 10px 0px;
+    height: 30px;
+    width: 250px;
+    font-size: 20px;
+}
