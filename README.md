@@ -1,4 +1,4 @@
-# PortableJournal
+# PersonalJournal
 A desktop journaling application powered by Electron and SQLite
 
 # Features
