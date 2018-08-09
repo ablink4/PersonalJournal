@@ -30,7 +30,7 @@ Type any search text in the search box and hit the Enter key.  A new Search wind
 
 # Future Ideas
 
-I am not actively making updates to this application at this time, although I may return to it at some point.  If you have interest in seeing a new feature or an issue you would like to see fixed, submit an issue or a pull request and I'm happy to help.  I have some ideas for the future that I may make at some point:
+If you have interest in seeing a new feature or an issue you would like to see fixed, submit an issue or a pull request and I'm happy to help.  I have some ideas for the future that I may make at some point:
 
 - Notify the user if there is unsaved content and they try to navigate away, either to another entry or exiting the application
 - Implement support for rich text
