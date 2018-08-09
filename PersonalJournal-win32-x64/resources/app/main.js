@@ -12,6 +12,10 @@ app.on('ready', () => {
     appWindows.mainWindow.loadURL('file://' + __dirname + '/index.html');
 });
 
+app.on('window-all-closed', () => {
+    app.quit();
+});
+
 ipcMain.on('show-browse-window', (event, arg) => {
     appWindows.browseWindow = new BrowserWindow({show: true});
     appWindows.browseWindow.loadURL('file://' + __dirname + '/browse.html');
